@@ -13,22 +13,23 @@ new Vue({
     },
     attack: function () {
       this.monsterHealth -= this.calculateDamage(3, 10)
-
       if(this.checkWin()) {
         return
       }
 
+      this.monsterAttack()
+    },
+    monsterAttack: function() {
       this.playerHealth -= this.calculateDamage(5,12)
-
-      if(this.playerHealth <= 0){
-        alert('Anda Kalah')
-        this.gameIsRunning = false
-        return
-      }
-      this.checkWin();
+      this.checkWin()
     },
     specialAttack: function () {
+      this.monsterHealth -= this.calculateDamage(12, 10)
+      if(this.checkWin()) {
+        return
+      }
 
+      this.monsterAttack()
     },
     heal: function () {
 
